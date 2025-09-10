@@ -1,0 +1,21 @@
+const express = require("express")
+const app = express()
+
+const cookieParer = require("cookie-parser")
+const path = require("path")
+
+
+app.use(cookieParer())
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+app.use(express.static(path.join(__dirname,"public")))
+app.set("view engine","ejs")
+
+
+app.get("/",(req,res)=>{
+    res.send("welcome to backend")
+})
+
+app.listen(3000,(req,res)=>{
+    console.log("server is running ")
+})
